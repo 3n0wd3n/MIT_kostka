@@ -1,0 +1,55 @@
+GAS LISTING /tmp/ccxjUzHH.s 			page 1
+
+
+   1               		.file	"main.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.section	.text.startup,"ax",@progbits
+   8               	.global	main
+  10               	main:
+  11               	/* prologue: function */
+  12               	/* frame size = 0 */
+  13               	/* stack size = 0 */
+  14               	.L__stack_usage = 0
+  15 0000 259A      		sbi 0x4,5
+  16 0002 2F9A      		sbi 0x5,7
+  17 0004 80E0      		ldi r24,0
+  18 0006 31E0      		ldi r19,lo8(1)
+  19               	.L2:
+  20 0008 93B1      		in r25,0x3
+  21 000a 292F      		mov r18,r25
+  22 000c 221F      		rol r18
+  23 000e 2227      		clr r18
+  24 0010 221F      		rol r18
+  25 0012 4111      		cpse r20,__zero_reg__
+  26 0014 00C0      		rjmp .L3
+  27 0016 97FD      		sbrc r25,7
+  28 0018 8327      		eor r24,r19
+  29               	.L3:
+  30 001a 8823      		tst r24
+  31 001c 01F0      		breq .L4
+  32 001e 2D9A      		sbi 0x5,5
+  33 0020 81E0      		ldi r24,lo8(1)
+  34               	.L5:
+  35 0022 422F      		mov r20,r18
+  36 0024 00C0      		rjmp .L2
+  37               	.L4:
+  38 0026 2D98      		cbi 0x5,5
+  39 0028 00C0      		rjmp .L5
+  41               		.ident	"GCC: (AVR_8_bit_GNU_Toolchain_3.6.1_1752) 5.4.0"
+GAS LISTING /tmp/ccxjUzHH.s 			page 2
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+     /tmp/ccxjUzHH.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccxjUzHH.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccxjUzHH.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccxjUzHH.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccxjUzHH.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccxjUzHH.s:10     .text.startup:0000000000000000 main
+
+NO UNDEFINED SYMBOLS
